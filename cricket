@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricketer Profile & Stats Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e3a8a;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Profile Card Section */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-details {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .profile-details h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e2e8f0;
+            color: var(--secondary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .meta-item strong {
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Format Filter Navigation */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+            background: #e2e8f0;
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: var(--secondary-color);
+        }
+
+        /* Stats Tables and Containers */
+        .stats-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-bottom: 2rem;
+            min-width: 600px;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            padding: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 600px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .tabs {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>🏏 CRICKET STATS HUB</header>
+
+    <div class="container">
+        <!-- Cricketer Profile Card -->
+        <div class="profile-card">
+            <div class="profile-img-container">
+                VS
+            </div>
+            <div class="profile-details">
+                <span class="tag">Batsman / Right-arm Offbreak</span>
+                <h1>Virat Sharma</h1>
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span>Country</span>
+                        <strong>India</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Born</span>
+                        <strong>November 5, 1994</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Age</span>
+                        <strong>31 Years</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Format Switcher tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchFormat('test')">Test</button>
+            <button class="tab-btn" onclick="switchFormat('odi')">ODI</button>
+            <button class="tab-btn" onclick="switchFormat('t20')">T20I</button>
+        </div>
+
+        <!-- Stats Content Display Area -->
+        <div class="stats-section">
+            <h2>Batting Career Summary</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Matches</th>
+                            <th>Innings</th>
+                            <th>Runs</th>
+                            <th>Highest Score</th>
+                            <th>Average</th>
+                            <th>Strike Rate</th>
+                            <th>100s</th>
+                            <th>50s</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="batting-row">
+                            <!-- Dynamic insertion via JavaScript -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Bowling Career Summary</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Matches</th>
+                            <th>Overs</th>
+                            <th>Wickets</th>
+                            <th>Best Bowling</th>
+                            <th>Average</th>
+                            <th>Economy</th>
+                            <th>Strike Rate</th>
+                            <th>5w</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="bowling-row">
+                            <!-- Dynamic insertion via JavaScript -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample structured data object representing career stats
+        const playerStats = {
+            test: {
+                batting: { mat: 95, inn: 160, runs: 7420, hs: "243*", avg: 51.17, sr: 56.4, hundreds: 24, fifties: 32 },
+                bowling: { mat: 95, overs: 45, wkts: 3, bbi: "1/12", avg: 43.33, econ: 2.88, sr: 90.0, fiveW: 0 }
+            },
+            odi: {
+                batting: { mat: 252, inn: 240, runs: 12160, hs: "183", avg: 57.35, sr: 93.2, hundreds: 43, fifties: 62 },
+                bowling: { mat: 252, overs: 124, wkts: 4, bbi: "1/15", avg: 122.0, econ: 5.42, sr: 135.0, fiveW: 0 }
+            },
+            t20: {
+                batting: { mat: 115, inn: 107, runs: 4008, hs: "122*", avg: 48.87, sr: 138.1, hundreds: 1, fifties: 37 },
+                bowling: { mat: 115, overs: 32, wkts: 4, bbi: "1/10", avg: 61.5, econ: 7.68, sr: 48.0, fiveW: 0 }
+            }
+        };
+
+        // Function to update the DOM tables based on selected tab format
+        function switchFormat(format) {
+            // Update Active Class on Buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Fetch formatting data
+            const data = playerStats[format];
+
+            // Render Batting Stats Row
+            document.getElementById('batting-row').innerHTML = `
+                <td>${data.batting.mat}</td>
+                <td>${data.batting.inn}</td>
+                <td><strong>${data.batting.runs}</strong></td>
+                <td>${data.batting.hs}</td>
